@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 abstract class AppTheme {
   static ThemeData get light {
     return ThemeData(
+      useMaterial3: true,
       colorScheme: const ColorScheme.light(
         primary: Color.fromRGBO(20, 99, 245, 1),
         onPrimary: Color.fromRGBO(33, 24, 20, 1),
@@ -27,6 +28,27 @@ abstract class AppTheme {
             letterSpacing: 0,
           ),
         ),
+      ),
+      iconTheme: const IconThemeData(
+        color: Color.fromRGBO(20, 99, 245, 1),
+      ),
+      scaffoldBackgroundColor: const Color.fromRGBO(249, 249, 249, 1),
+      inputDecorationTheme: InputDecorationTheme(
+        prefixIconColor: const Color.fromRGBO(20, 99, 245, 1),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Color.fromRGBO(242, 242, 242, 1)),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Color.fromRGBO(242, 242, 242, 1)),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Color.fromRGBO(20, 99, 245, 1)),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        fillColor: const Color.fromRGBO(242, 242, 242, 1),
+        filled: true,
       ),
     );
   }

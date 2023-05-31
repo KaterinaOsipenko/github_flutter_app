@@ -16,6 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   auto_route: ^5.0.4
   google_fonts: ^4.0.4
+  dio: ^5.1.2
   
   
 

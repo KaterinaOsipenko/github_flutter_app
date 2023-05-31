@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_search_app/config/router/app_route.gr.dart';
+import 'package:github_search_app/config/themes/app_themes.dart';
 
 void main() {
   runApp(ProviderScope(
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: AppTheme.light,
       routerDelegate: appRouter.delegate(),
       debugShowCheckedModeBanner: false,
       routeInformationParser: appRouter.defaultRouteParser(),
