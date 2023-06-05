@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:github_search_app/presentation/widgets/repositories_list_widget.dart';
 import 'package:github_search_app/presentation/widgets/search_widget.dart';
 
 import 'package:github_search_app/utils/constants.dart';
@@ -42,7 +43,24 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SafeArea(
           child: Container(
-        child: Column(children: [SearchWidget()]),
+        child: Column(children: [
+          SearchWidget(),
+          Container(
+            margin: EdgeInsets.only(
+              left: mediaQuery.size.width * 0.07,
+              bottom: mediaQuery.size.height * 0.025,
+            ),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Search History',
+              style: Theme.of(context)
+                  .textTheme
+                  .displayMedium!
+                  .copyWith(color: Theme.of(context).colorScheme.primary),
+            ),
+          ),
+          RepositoriesListWidget(),
+        ]),
       )),
     );
   }

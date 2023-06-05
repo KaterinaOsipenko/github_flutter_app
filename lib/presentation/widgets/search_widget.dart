@@ -53,8 +53,10 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
                 .bodyMedium!
                 .copyWith(color: Theme.of(context).colorScheme.onSurface),
           ),
-          onChanged: (value) =>
+          onFieldSubmitted: (value) =>
               ref.read(searchNameProvider.notifier).state = value,
+          onSaved: (value) =>
+              ref.read(searchNameProvider.notifier).state = value!,
         ),
       ),
     );

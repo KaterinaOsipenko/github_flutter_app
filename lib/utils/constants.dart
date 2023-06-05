@@ -1,5 +1,5 @@
 /// API
-const String baseUrl = 'https://api.github.com';
+const String baseUrl = 'https://api.github.com/search/repositories';
 const String searchInput = 'q';
 const String perPage = 'per_page';
 const int perPageItems = 15;

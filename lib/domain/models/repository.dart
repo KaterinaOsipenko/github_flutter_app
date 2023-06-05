@@ -1,18 +1,31 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class Repository {
-  final int? id;
-  final String? name;
+  final int id;
+  final String name;
+  bool _isFavourite;
 
-  const Repository({this.id, this.name});
+  bool get isFavourite => _isFavourite;
+
+  set isFavourite(bool value) {
+    _isFavourite = value;
+  }
+
+  Repository({
+    required this.id,
+    required this.name,
+    bool isFavourite = false,
+  }) : _isFavourite = isFavourite;
 
   factory Repository.fromMap(Map<String, dynamic> map) {
+    print('re');
     return Repository(
-      id: map['id'] != null ? map['id'] as int : null,
-      name: map['name'] != null ? map['name'] as String : null,
+      id: map['id'] as int,
+      name: map['name'] as String,
     );
   }
 
-  factory Repository.fromJson(String source) =>
-      Repository.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Repository.fromJson(Map<String, dynamic> source) =>
+      Repository.fromMap(source);
 }

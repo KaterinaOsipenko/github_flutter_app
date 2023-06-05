@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:github_search_app/domain/models/repository.dart';
 import 'package:github_search_app/domain/repositories/api_repository.dart';
@@ -12,7 +13,10 @@ class ApiRepositoryImpl implements ApiRepository {
   @override
   Future<List<Repository>> getRepos(
       {required String searchValue, required int pageValue}) async {
+    print(searchValue);
+    print('api');
     List<Repository> repoList = [];
+
     try {
       final response = await _dio.get(baseUrl,
           queryParameters: <String, dynamic>{
@@ -20,10 +24,14 @@ class ApiRepositoryImpl implements ApiRepository {
             perPage: perPageItems,
             page: pageValue
           });
+
       if (response.statusCode == 200) {
-        var data = jsonDecode(response.data);
-        var list = data['item'] as List;
+        print(response.statusCode);
+
+        var list = response.data['items'] as List;
+        print(list);
         repoList = list.map((e) => Repository.fromJson(e)).toList();
+        print(repoList.first.name);
       } else {
         throw Exception('Faled to load data');
       }
