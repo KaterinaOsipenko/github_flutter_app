@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_search_app/presentation/providers/search_name.dart';
+import 'package:github_search_app/presentation/widgets/empty_search_widget.dart';
 import 'package:github_search_app/presentation/widgets/repositories_list_widget.dart';
 import 'package:github_search_app/presentation/widgets/search_widget.dart';
 
 import 'package:github_search_app/utils/constants.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    var name = ref.watch(searchNameProvider);
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -42,26 +46,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: SafeArea(
-          child: Container(
-        child: Column(children: [
-          SearchWidget(),
-          Container(
-            margin: EdgeInsets.only(
-              left: mediaQuery.size.width * 0.07,
-              bottom: mediaQuery.size.height * 0.025,
-            ),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Search History',
-              style: Theme.of(context)
-                  .textTheme
-                  .displayMedium!
-                  .copyWith(color: Theme.of(context).colorScheme.primary),
-            ),
+          child: Column(children: [
+        const SearchWidget(),
+        Container(
+          margin: EdgeInsets.only(
+            left: mediaQuery.size.width * 0.07,
+            bottom: mediaQuery.size.height * 0.025,
           ),
-          RepositoriesListWidget(),
-        ]),
-      )),
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Search History',
+            style: Theme.of(context)
+                .textTheme
+                .displayMedium!
+                .copyWith(color: Theme.of(context).colorScheme.primary),
+          ),
+        ),
+        name.isEmpty
+            ? const EmptySearchWidget()
+            : const RepositoriesListWidget(),
+      ])),
     );
   }
 }
