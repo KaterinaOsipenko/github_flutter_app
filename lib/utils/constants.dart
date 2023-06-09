@@ -7,3 +7,12 @@ const String page = 'page';
 
 /// App
 const String titleAppBar = 'Github repos list';
+
+/// Messages
+const String emptyHistory =
+    'You have empty history. Click on search to start journey!';
+const String negativeResult =
+    'Nothing was find for your search. Please check the spelling';
+const String history = 'Search History';
+const String whatFountPositive = 'What we have found';
+const String whatFountNegative = 'What we found';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_search_app/presentation/providers/search_name.dart';
+import 'package:github_search_app/presentation/widgets/description_screen_widget.dart';
 import 'package:github_search_app/presentation/widgets/empty_search_widget.dart';
 import 'package:github_search_app/presentation/widgets/repositories_list_widget.dart';
 import 'package:github_search_app/presentation/widgets/search_widget.dart';
@@ -48,22 +49,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: SafeArea(
           child: Column(children: [
         const SearchWidget(),
-        Container(
-          margin: EdgeInsets.only(
-            left: mediaQuery.size.width * 0.07,
-            bottom: mediaQuery.size.height * 0.025,
-          ),
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Search History',
-            style: Theme.of(context)
-                .textTheme
-                .displayMedium!
-                .copyWith(color: Theme.of(context).colorScheme.primary),
-          ),
-        ),
+        const DescriprionScreenWidget(),
         name.isEmpty
-            ? const EmptySearchWidget()
+            ? const EmptySearchWidget(
+                content: emptyHistory,
+              )
             : const RepositoriesListWidget(),
       ])),
     );
