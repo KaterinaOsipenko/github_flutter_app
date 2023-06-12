@@ -6,7 +6,7 @@ import 'package:github_search_app/presentation/providers/search_name.dart';
 final repositoriesListProvide = FutureProvider.family<List<Repository>, int>(
   (ref, page) {
     var name = ref.watch(searchNameProvider);
-    print('get repos');
+
     return ref
         .read(repositoryApiProvider)
         .getRepos(searchValue: name, pageValue: page);
