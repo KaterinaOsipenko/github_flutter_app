@@ -7,6 +7,7 @@ const String page = 'page';
 
 /// App
 const String titleAppBar = 'Github repos list';
+const String favTitleAppBar = 'Favourite repos list';
 
 /// Messages
 const String emptyHistory =

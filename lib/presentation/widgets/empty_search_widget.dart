@@ -6,8 +6,16 @@ class EmptySearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(content),
+    final mediaQuery = MediaQuery.of(context);
+    return Container(
+      width: mediaQuery.size.width * 0.55,
+      margin: EdgeInsets.only(top: mediaQuery.size.height * 0.2),
+      child: Center(
+        child: Text(
+          content,
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }

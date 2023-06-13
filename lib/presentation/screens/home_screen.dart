@@ -1,8 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_search_app/config/router/app_route.gr.dart';
+import 'package:github_search_app/presentation/providers/get_repos.dart';
 import 'package:github_search_app/presentation/providers/search_name.dart';
 import 'package:github_search_app/presentation/widgets/description_screen_widget.dart';
 import 'package:github_search_app/presentation/widgets/empty_search_widget.dart';
+import 'package:github_search_app/presentation/widgets/repositories_list_process.dart';
 import 'package:github_search_app/presentation/widgets/repositories_list_widget.dart';
 import 'package:github_search_app/presentation/widgets/search_widget.dart';
 
@@ -19,13 +23,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var name = ref.watch(searchNameProvider);
+    var repositoriesList = ref.watch(repositoriesListProvide(1));
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 5,
         surfaceTintColor: Theme.of(context).colorScheme.background,
         foregroundColor: Theme.of(context).colorScheme.onSecondary,
-        shadowColor: const Color.fromRGBO(0, 0, 0, 0.33),
+        shadowColor: const Color.fromARGB(83, 163, 25, 25),
         title: const Center(child: Text(titleAppBar)),
         actions: [
           Container(
@@ -39,7 +44,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () =>
+                  context.router.push(const FavouriteScreenRoute()),
               icon: Icon(Icons.star,
                   color: Theme.of(context).colorScheme.background),
             ),
@@ -47,15 +53,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ],
       ),
       body: SafeArea(
-          child: Column(children: [
-        const SearchWidget(),
-        const DescriprionScreenWidget(),
-        name.isEmpty
-            ? const EmptySearchWidget(
-                content: emptyHistory,
-              )
-            : const RepositoriesListWidget(),
-      ])),
+        child: Column(
+          children: [
+            const SearchWidget(),
+            const DescriprionScreenWidget(),
+            name.isEmpty
+                ? const EmptySearchWidget(
+                    content: emptyHistory,
+                  )
+                : RepositoriesListProcess(repositoryList: repositoriesList),
+          ],
+        ),
+      ),
     );
   }
 }

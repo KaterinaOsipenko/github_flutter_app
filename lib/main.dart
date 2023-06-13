@@ -10,16 +10,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final appRouter = AppRouter();
-
+  final _appRouter = AppRouter();
   MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: AppTheme.light,
-      routerDelegate: appRouter.delegate(),
+      routerDelegate: _appRouter.delegate(),
       debugShowCheckedModeBanner: false,
-      routeInformationParser: appRouter.defaultRouteParser(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }
