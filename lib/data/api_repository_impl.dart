@@ -11,7 +11,7 @@ class ApiRepositoryImpl implements ApiRepository {
   Future<List<Repository>> getRepos(
       {required String searchValue, required int pageValue}) async {
     List<Repository> repoList = [];
-    print('api get repos');
+
     try {
       final response = await _dio.get(baseUrl,
           queryParameters: <String, dynamic>{
@@ -25,12 +25,10 @@ class ApiRepositoryImpl implements ApiRepository {
 
         repoList = list.map((e) => Repository.fromJson(e)).toList();
       } else {
-        print(response.statusMessage);
         throw Exception('Failed to load data');
       }
     } on DioError catch (e) {
-      print(e.toString());
-      throw Exception('Failed to load data');
+      throw Exception(e);
     }
     return repoList;
   }

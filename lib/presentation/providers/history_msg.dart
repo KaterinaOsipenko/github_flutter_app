@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_search_app/domain/models/repository.dart';
 import 'package:github_search_app/presentation/providers/get_repos.dart';
 import 'package:github_search_app/presentation/providers/search_name.dart';
 
@@ -10,11 +11,15 @@ final historyMsgProvider = Provider<String>((ref) {
   if (searchInput.isEmpty) {
     historyMsg = history;
   } else {
-    var reposList = ref.watch(repositoriesListProvide(1));
-    if (reposList.value!.isEmpty) {
-      historyMsg = whatFountNegative;
-    } else if (reposList.value!.isNotEmpty) {
-      historyMsg = whatFountPositive;
+    AsyncValue<List<Repository>> reposList =
+        ref.watch(repositoriesListProvide(1));
+    var listRepos = reposList.value;
+    if (listRepos != null) {
+      if (listRepos.isEmpty) {
+        historyMsg = whatFountNegative;
+      } else if (listRepos.isNotEmpty) {
+        historyMsg = whatFountPositive;
+      }
     }
   }
   return historyMsg;

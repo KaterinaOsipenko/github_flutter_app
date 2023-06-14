@@ -6,7 +6,6 @@ import 'package:github_search_app/presentation/providers/get_repos.dart';
 import 'package:github_search_app/presentation/providers/search_name.dart';
 import 'package:github_search_app/presentation/widgets/description_screen_widget.dart';
 import 'package:github_search_app/presentation/widgets/empty_search_widget.dart';
-import 'package:github_search_app/presentation/widgets/repositories_list_process.dart';
 import 'package:github_search_app/presentation/widgets/repositories_list_widget.dart';
 import 'package:github_search_app/presentation/widgets/search_widget.dart';
 
@@ -61,7 +60,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ? const EmptySearchWidget(
                     content: emptyHistory,
                   )
-                : RepositoriesListProcess(repositoryList: repositoriesList),
+                : RepositoriesListWidget(),
           ],
         ),
       ),
