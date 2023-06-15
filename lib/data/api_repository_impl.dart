@@ -13,12 +13,11 @@ class ApiRepositoryImpl implements ApiRepository {
     List<Repository> repoList = [];
 
     try {
-      final response = await _dio.get(baseUrl,
-          queryParameters: <String, dynamic>{
-            searchInput: searchValue,
-            perPage: perPageItems,
-            page: pageValue
-          });
+      final response =
+          await _dio.get(baseUrl, queryParameters: <String, dynamic>{
+        searchInput: searchValue,
+        perPage: perPageItems * pageValue,
+      });
 
       if (response.statusCode == 200) {
         var list = response.data['items'] as List;

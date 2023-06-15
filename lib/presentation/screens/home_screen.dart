@@ -22,7 +22,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var name = ref.watch(searchNameProvider);
-    var repositoriesList = ref.watch(repositoriesListProvide(1));
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
