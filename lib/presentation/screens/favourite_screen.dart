@@ -29,7 +29,17 @@ class _FavouriteScreenState extends ConsumerState<FavouriteScreen> {
         shadowColor: const Color.fromRGBO(0, 0, 0, 0.33),
         title: const Center(child: Text(favTitleAppBar)),
       ),
-      body: const FavouriteRepositoriesListWidget(),
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.03,
+            ),
+            child: const FavouriteRepositoriesListWidget(),
+          ),
+        ),
+      ),
     );
   }
 }

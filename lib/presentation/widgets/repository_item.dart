@@ -12,44 +12,52 @@ class RepositoryItem extends ConsumerStatefulWidget {
 }
 
 class _RepositoryItemState extends ConsumerState<RepositoryItem> {
+  void onToggleFavourite(bool value) {
+    setState(
+      () {
+        widget.repository.isFavourite = value;
+        value
+            ? ref.read(favRepositoryProvider).add(widget.repository)
+            : ref.read(favRepositoryProvider).remove(widget.repository);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    void onToggleFavourite(bool value) {
-      setState(
-        () {
-          widget.repository.isFavourite = value;
-          value
-              ? ref.read(favRepositoryProvider).add(widget.repository)
-              : ref.read(favRepositoryProvider).remove(widget.repository);
-        },
-      );
-    }
-
-    return ListTile(
-      leading: Text(
-        widget.repository.name,
-        style: Theme.of(context)
-            .textTheme
-            .displayMedium!
-            .copyWith(color: Theme.of(context).colorScheme.onPrimary),
-      ),
-      trailing: widget.repository.isFavourite == true
-          ? IconButton(
-              onPressed: () {
-                onToggleFavourite(false);
-              },
-              icon: Icon(
-                Icons.star,
-                color: Theme.of(context).colorScheme.primary,
+    final mediaQuery = MediaQuery.of(context);
+    return Container(
+      margin: EdgeInsets.only(bottom: mediaQuery.size.height * 0.01),
+      child: ListTile(
+        tileColor: Theme.of(context).colorScheme.surface,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: const BorderSide(color: Colors.transparent)),
+        leading: Text(
+          widget.repository.name,
+          style: Theme.of(context)
+              .textTheme
+              .displayMedium!
+              .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+        ),
+        trailing: widget.repository.isFavourite == true
+            ? IconButton(
+                onPressed: () {
+                  onToggleFavourite(false);
+                },
+                icon: Icon(
+                  Icons.star,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              )
+            : IconButton(
+                onPressed: () {
+                  onToggleFavourite(true);
+                },
+                icon: Icon(Icons.star_border,
+                    color: Theme.of(context).colorScheme.primary),
               ),
-            )
-          : IconButton(
-              onPressed: () {
-                onToggleFavourite(true);
-              },
-              icon: Icon(Icons.star_border,
-                  color: Theme.of(context).colorScheme.primary),
-            ),
+      ),
     );
   }
 }

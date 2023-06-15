@@ -18,6 +18,7 @@ class RepositoriesListWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final mediaQuery = MediaQuery.of(context);
     repositoryList = ref.watch(repositoriesListProvide(page));
     return repositoryList.when(error: ((error, stackTrace) {
       return const EmptySearchWidget(content: 'Error');
@@ -29,7 +30,8 @@ class RepositoriesListWidget extends ConsumerWidget {
       return GestureDetector(
         onVerticalDragDown: (details) => loadMoreRepositories(details, ref),
         child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.70,
+          width: mediaQuery.size.width * 0.9,
+          height: mediaQuery.size.height * 0.70,
           child: ListView.builder(
             itemBuilder: (context, index) {
               return RepositoryItem(
