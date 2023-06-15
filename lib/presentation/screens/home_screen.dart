@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_search_app/config/router/app_route.gr.dart';
-import 'package:github_search_app/presentation/providers/get_repos.dart';
 import 'package:github_search_app/presentation/providers/search_name.dart';
 import 'package:github_search_app/presentation/widgets/description_screen_widget.dart';
 import 'package:github_search_app/presentation/widgets/empty_search_widget.dart';
