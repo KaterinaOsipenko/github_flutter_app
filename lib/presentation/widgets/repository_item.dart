@@ -15,6 +15,7 @@ class _RepositoryItemState extends ConsumerState<RepositoryItem> {
   @override
   Widget build(BuildContext context) {
     void onToggleFavourite(bool value) {
+      print('toggle fav $value');
       setState(
         () {
           widget.repository.isFavourite = value;

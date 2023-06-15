@@ -53,6 +53,9 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
                 .bodyMedium!
                 .copyWith(color: Theme.of(context).colorScheme.onSurface),
           ),
+          onTapOutside: (event) {
+            FocusManager.instance.primaryFocus!.unfocus();
+          },
           onFieldSubmitted: (value) =>
               ref.read(searchNameProvider.notifier).state = value,
           onSaved: (value) =>
