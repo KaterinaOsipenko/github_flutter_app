@@ -11,10 +11,6 @@ class RepositoriesListWidget extends ConsumerWidget {
   RepositoriesListWidget({super.key, this.page = 1});
 
   loadMoreRepositories(DragDownDetails details, WidgetRef ref) {
-    page = page + 1;
-
-    repositoryList = ref.watch(repositoriesListProvide(page));
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
