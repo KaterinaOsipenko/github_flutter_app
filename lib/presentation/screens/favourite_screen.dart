@@ -20,7 +20,7 @@ class _FavouriteScreenState extends ConsumerState<FavouriteScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            context.router.popAndPush(const HomeScreenRoute());
+            context.router.replace(const HomeScreenRoute());
           },
         ),
         elevation: 5,

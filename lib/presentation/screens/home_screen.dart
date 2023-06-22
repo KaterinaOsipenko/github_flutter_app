@@ -49,18 +49,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SearchWidget(),
-            const DescriprionScreenWidget(),
-            name.isEmpty
-                ? const EmptySearchWidget(
-                    content: emptyHistory,
-                  )
-                : RepositoriesListWidget(),
-          ],
-        ),
+      body: Column(
+        children: [
+          Container(
+            color: Theme.of(context).colorScheme.background,
+            child: const Column(
+              children: [
+                SearchWidget(),
+                DescriprionScreenWidget(),
+              ],
+            ),
+          ),
+          name.isEmpty
+              ? const EmptySearchWidget(
+                  content: emptyHistory,
+                )
+              : const RepositoriesListWidget(),
+        ],
       ),
     );
   }
