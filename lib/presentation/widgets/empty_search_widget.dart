@@ -8,7 +8,7 @@ class EmptySearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     return Container(
-      width: mediaQuery.size.width * 0.55,
+      width: mediaQuery.size.width * 0.5,
       margin: EdgeInsets.only(top: mediaQuery.size.height * 0.2),
       child: Center(
         child: Text(

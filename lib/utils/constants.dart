@@ -14,6 +14,8 @@ const String emptyHistory =
     'You have empty history. Click on search to start journey!';
 const String negativeResult =
     'Nothing was find for your search. Please check the spelling';
+const String noFavouriteRepos =
+    'You have no favorites. Click on star while searching to add first favorite';
 const String history = 'Search History';
 const String whatFountPositive = 'What we have found';
 const String whatFountNegative = 'What we found';
