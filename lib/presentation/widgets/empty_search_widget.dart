@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:github_search_app/utils/constants.dart';
 
 class EmptySearchWidget extends StatelessWidget {
   final String content;
@@ -7,15 +8,25 @@ class EmptySearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    return Container(
-      width: mediaQuery.size.width * 0.5,
-      margin: EdgeInsets.only(top: mediaQuery.size.height * 0.2),
-      child: Center(
-        child: Text(
-          content,
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
+    return content == noFavouriteRepos
+        ? SizedBox(
+            width: mediaQuery.size.width * 0.5,
+            child: Center(
+              child: Text(
+                content,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          )
+        : Container(
+            width: mediaQuery.size.width * 0.5,
+            margin: EdgeInsets.only(top: mediaQuery.size.height * 0.2),
+            child: Center(
+              child: Text(
+                content,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
   }
 }
