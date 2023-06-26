@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_search_app/domain/models/repository.dart';
 
+/// provider for favourite repository list
 final favRepositoryProvider =
     StateNotifierProvider<FavChangeNotifier, List<Repository>>(
         (ref) => FavChangeNotifier());

@@ -3,10 +3,14 @@ import 'package:github_search_app/domain/models/repository.dart';
 import 'package:github_search_app/domain/repositories/api_repository.dart';
 import 'package:github_search_app/utils/constants.dart';
 
+/// class for working with api with dio
 class ApiRepositoryImpl implements ApiRepository {
   final Dio _dio;
 
   ApiRepositoryImpl(this._dio);
+
+  /// get repositories by query and page
+  /// query example: https://api.github.com/search/repositories?q=${searchValue}&per_page=${page}
   @override
   Future<List<Repository>> getRepos(
       {required String searchValue, required int pageValue}) async {

@@ -5,6 +5,8 @@ import 'package:github_search_app/presentation/providers/search_name.dart';
 
 import 'package:github_search_app/utils/constants.dart';
 
+/// provider for messages
+/// message should change depends on repository list value
 final historyMsgProvider = Provider<String>((ref) {
   var searchInput = ref.watch(searchNameProvider);
   var historyMsg = '';

@@ -3,6 +3,7 @@ import 'package:github_search_app/presentation/screens/favourite_screen.dart';
 
 import 'package:github_search_app/presentation/screens/home_screen.dart';
 
+/// navigation
 @AdaptiveAutoRouter(
   routes: <AutoRoute>[
     AutoRoute(page: HomeScreen, initial: true),
