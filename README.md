@@ -35,11 +35,11 @@ Screens:
 
 4) Empty favourite Screen
 
- <img src="https://github.com/KaterinaOsipenko/github_flutter_app/assets/91600815/3c74a09f-6a81-451e-8661-93ffd64ad017" width="250" height="480">
+    <img src="https://github.com/KaterinaOsipenko/github_flutter_app/assets/91600815/3c74a09f-6a81-451e-8661-93ffd64ad017" width="250" height="480">
 
 6) Error or Negative Search Result Screen
 
-  <img src="https://github.com/KaterinaOsipenko/github_flutter_app/assets/91600815/3a0bd996-9f66-493c-a097-7624e1a50ae4" width="250" height="480">
+    <img src="https://github.com/KaterinaOsipenko/github_flutter_app/assets/91600815/3a0bd996-9f66-493c-a097-7624e1a50ae4" width="250" height="480">
 
 
 
